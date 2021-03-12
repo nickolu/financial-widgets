@@ -3,7 +3,7 @@ import { BankRecord } from "./BankRecord.js";
 import { BANK_HISTORY_LOCAL_STORAGE_NAME } from "../constants.js";
 import BANK_RECORDS from "../data/bankRecords.json";
 import { LocalStorageDataStore } from "../data-store/LocalStorageDataStore.js";
-
+const DEFAULT_TRANSACTION_HISTORY = 30;
 class BankHistory extends BaseEntity {
     constructor(initialBankHistoryRecords) {
         super();
@@ -24,7 +24,6 @@ class BankHistory extends BaseEntity {
         );
 
         this.documents = this.bankRecords.map((record) => record.document);
-
         this.dataStore.initializeDataStore(this.documents);
 
         return this;
@@ -49,7 +48,7 @@ class BankHistory extends BaseEntity {
         return this.records.find((record) => id === record.id);
     }
 
-    getTransactionSummary(sinceNumberOfDays = 30) {
+    getTransactionSummary(sinceNumberOfDays = DEFAULT_TRANSACTION_HISTORY) {
         return this.records.reduce(
             (accumulator, record) => {
                 if (!record.isOlderThanNumberOfDays(sinceNumberOfDays)) {

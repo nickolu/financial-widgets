@@ -1,9 +1,7 @@
 import { BankHistory } from "./BankHistory.js";
 import BANK_RECORDS from "../data/bankRecords.json";
 import { BankRecord } from "./bankRecord.js";
-import {
-    mockLocalStorageDataStoreFunctions,
-} from "../data-store/LocalStorageDataStore.js";
+import { mockLocalStorageDataStoreFunctions } from "../data-store/LocalStorageDataStore.js";
 jest.mock("../data-store/LocalStorageDataStore.js");
 
 describe("BankHistory", () => {
@@ -11,6 +9,7 @@ describe("BankHistory", () => {
         const bankHistory = new BankHistory(BANK_RECORDS);
         expect(bankHistory.records.length).toEqual(BANK_RECORDS.length);
     });
+
     it("should add a record to the data store", () => {
         const bankHistory = new BankHistory(BANK_RECORDS);
         const record = BankRecord.createNew({
@@ -20,6 +19,7 @@ describe("BankHistory", () => {
         bankHistory.addRecord(record);
         expect(bankHistory.records.length).toEqual(BANK_RECORDS.length + 1);
     });
+
     it("should attach the provided methods as class members", () => {
         const bankHistory = new BankHistory(BANK_RECORDS);
         const mockReactStateValue = "some value";
@@ -66,7 +66,9 @@ describe("BankHistory", () => {
             description: newDescription,
         };
         bankHistory.updateRecord(newDocument);
-        expect(mockLocalStorageDataStoreFunctions.update).toHaveBeenCalledWith(newDocument);
+        expect(mockLocalStorageDataStoreFunctions.update).toHaveBeenCalledWith(
+            newDocument
+        );
         expect(bankHistory.findRecordById(newRecord.id).description).toEqual(
             newDescription
         );
