@@ -1,0 +1,269 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the main page 1`] = `
+<div
+  class="App"
+>
+  <div
+    class="container"
+  >
+    <h2>
+      Bank History Summary
+    </h2>
+    <table
+      class="sc-bdfBwQ gHONxa table"
+    >
+      <thead>
+        <tr>
+          <th>
+            ID
+          </th>
+          <th>
+            Date
+          </th>
+          <th>
+            Description
+          </th>
+          <th>
+            Amount
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            2
+          </td>
+          <td>
+            3/2/2020
+          </td>
+          <td>
+            Test transaction 1
+          </td>
+          <td>
+            10.00
+          </td>
+        </tr>
+        <tr>
+          <td>
+            3
+          </td>
+          <td>
+            2/27/2021
+          </td>
+          <td>
+            Test transaction 2
+          </td>
+          <td>
+            22.00
+          </td>
+        </tr>
+        <tr>
+          <td>
+            4
+          </td>
+          <td>
+            2/28/2021
+          </td>
+          <td>
+            Test transaction 3
+          </td>
+          <td>
+            -20.00
+          </td>
+        </tr>
+        <tr>
+          <td>
+            5
+          </td>
+          <td>
+            3/1/2021
+          </td>
+          <td>
+            Test transaction 4
+          </td>
+          <td>
+            1000.00
+          </td>
+        </tr>
+        <tr>
+          <td>
+            6
+          </td>
+          <td>
+            3/2/2021
+          </td>
+          <td>
+            Test transaction 5
+          </td>
+          <td>
+            -100.00
+          </td>
+        </tr>
+        <tr>
+          <td
+            colspan="3"
+          >
+            Total Records: 
+            4
+          </td>
+          <td
+            class="positive"
+          >
+            Total: 
+            $902
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>
+      Edit a Bank Transaction
+    </h2>
+    <form
+      class=""
+    >
+      <div
+        class="sc-gsTCUz ccxAlh form-group"
+      >
+        <label
+          class=""
+          for="id"
+        >
+          Select Transaction
+        </label>
+        <select
+          class="form-control"
+        >
+          <option>
+            2
+          </option>
+          <option>
+            3
+          </option>
+          <option>
+            4
+          </option>
+          <option>
+            5
+          </option>
+          <option>
+            6
+          </option>
+        </select>
+      </div>
+      <div
+        class="sc-gsTCUz ccxAlh form-group"
+      >
+        <label
+          class=""
+          for="description"
+        >
+          Description
+        </label>
+        <input
+          class="form-control"
+          id="description"
+          name="description"
+          type="text"
+          value="Test transaction 1"
+        />
+      </div>
+      <div
+        class="sc-gsTCUz ccxAlh form-group"
+      >
+        <label
+          class=""
+          for="date"
+        >
+          Date
+        </label>
+        <input
+          class="form-control"
+          id="date"
+          name="date"
+          type="date"
+          value="2020-03-03"
+        />
+      </div>
+      <div
+        class="sc-gsTCUz ccxAlh form-group"
+      >
+        <label
+          class=""
+          for="amount"
+        >
+          Amount
+        </label>
+        <input
+          class="form-control"
+          id="amount"
+          name="amount"
+          type="number"
+          value="10.00"
+        />
+      </div>
+      <div
+        class="sc-gsTCUz ccxAlh form-group"
+      >
+        <button
+          class="btn btn-secondary"
+          type="submit"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+    <h2>
+      Create a New Transaction
+    </h2>
+    <form
+      class=""
+    >
+      <div
+        class="sc-gsTCUz ccxAlh form-group"
+      >
+        <label
+          class=""
+          for="description"
+        >
+          Description
+        </label>
+        <input
+          class="form-control"
+          id="description"
+          name="description"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="sc-gsTCUz ccxAlh form-group"
+      >
+        <label
+          class=""
+          for="amount"
+        >
+          Amount
+        </label>
+        <input
+          class="form-control"
+          id="amount"
+          name="amount"
+          type="number"
+          value=""
+        />
+      </div>
+      <div
+        class="sc-gsTCUz ccxAlh form-group"
+      >
+        <button
+          class="btn btn-secondary"
+          type="submit"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+`;

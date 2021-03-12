@@ -46,7 +46,7 @@ const BankHistorySummary = ({ bankHistory }) => {
                     <tr>
                         <td colSpan="3">Total Records: {totalRecords}</td>
                         <td className={getTotalValueClassName(totalAmount)}>
-                            Total: {currencyLocalization(-100, "en-us")}
+                            Total: {currencyLocalization(totalAmount, "en-us")}
                         </td>
                     </tr>
                 </tbody>

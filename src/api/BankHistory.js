@@ -1,33 +1,31 @@
-import {
-    getLocalStorageRecords,
-    initializeLocalStorage,
-    insertLocalStorageRecord,
-} from "./localStorage.js";
 import { BaseEntity } from "./BaseEntity.js";
 import { BankRecord } from "./BankRecord.js";
 import { BANK_HISTORY_LOCAL_STORAGE_NAME } from "../constants.js";
 import BANK_RECORDS from "../data/bankRecords.json";
+import { LocalStorageDataStore } from "../data-store/LocalStorageDataStore.js";
 
-class BankHistoryDataStore extends BaseEntity {
+class BankHistory extends BaseEntity {
     constructor(initialBankHistoryRecords) {
         super();
         this.reactStateValue = () => {};
         this.reactStateSetter = () => {};
-        const localStorageRecords = getLocalStorageRecords(
+        this.dataStore = LocalStorageDataStore.getDataStore(
             BANK_HISTORY_LOCAL_STORAGE_NAME
         );
+
+        const localStorageRecords = this.dataStore.getAllDocuments();
 
         if (localStorageRecords && localStorageRecords.length > 0) {
             initialBankHistoryRecords = localStorageRecords;
         }
 
         this.bankRecords = initialBankHistoryRecords.map(
-            (record) => new BankRecord(record)
+            (document) => new BankRecord(document)
         );
 
         this.documents = this.bankRecords.map((record) => record.document);
 
-        initializeLocalStorage(BANK_HISTORY_LOCAL_STORAGE_NAME, this.documents);
+        this.dataStore.initializeDataStore(this.documents);
 
         return this;
     }
@@ -36,14 +34,10 @@ class BankHistoryDataStore extends BaseEntity {
         return this.bankRecords;
     }
 
-    addRecord(recordJson) {
-        const newRecord = BankRecord.createNew(recordJson);
-        this.records.push(newRecord);
-        insertLocalStorageRecord(
-            BANK_HISTORY_LOCAL_STORAGE_NAME,
-            newRecord.document
-        );
-        this.reactStateSetter(recordJson);
+    addRecord(record) {
+        this.records.push(record);
+        this.dataStore.insert(record.document);
+        this.reactStateSetter(record.document);
     }
 
     bindReactState(reactStateValue, reactStateSetter) {
@@ -52,34 +46,30 @@ class BankHistoryDataStore extends BaseEntity {
     }
 
     findRecordById(id) {
-        console.log("finding record by id", id);
         return this.records.find((record) => id === record.id);
     }
 
-    getTransactionSummary() {
+    getTransactionSummary(sinceNumberOfDays = 30) {
         return this.records.reduce(
             (accumulator, record) => {
-                if (!record.isOlderThanNumberOfDays(30)) {
+                if (!record.isOlderThanNumberOfDays(sinceNumberOfDays)) {
                     accumulator.totalAmount += Number(record.amount);
                     accumulator.totalRecords += 1;
                 }
-
                 return accumulator;
             },
             { totalRecords: 0, totalAmount: 0 }
         );
     }
 
-    updateRecord(recordJson) {
-        console.log("updating record with document", recordJson);
-        const record = this.findRecordById(recordJson.id);
+    updateRecord(document) {
+        const record = this.findRecordById(document.id);
 
         if (record) {
-            record.update(recordJson);
-            this.reactStateSetter(recordJson);
+            record.update(document);
+            this.reactStateSetter(document);
         }
     }
 }
 
-const bankHistory = new BankHistoryDataStore(BANK_RECORDS);
-export { BankHistoryDataStore, bankHistory };
+export { BankHistory };

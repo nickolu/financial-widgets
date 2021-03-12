@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Container } from "reactstrap";
-import { BankHistoryDataStore } from "../../api/BankHistoryDataStore.js";
+import { BankHistory } from "../../api/BankHistory.js";
 import { BankHistorySummary } from "./BankHistorySummary";
 import BANK_RECORDS from "../../data/bankRecords.json";
 import { EditTransactionForm } from "./EditTransactionForm.jsx";
 import { CreateTransactionForm } from "./CreateTransactionForm.jsx";
 
 const BankHistoryPage = () => {
-    const bankHistory = new BankHistoryDataStore(BANK_RECORDS);
+    const bankHistory = new BankHistory(BANK_RECORDS);
     const [bankHistoryRecords, setBankHistoryRecords] = useState(
         bankHistory.records
     );

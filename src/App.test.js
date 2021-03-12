@@ -1,8 +1,18 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render } from "@testing-library/react";
+import App from "./App";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+jest.mock("uuid", () => {
+    let currentId = 0;
+    return {
+        v4: () => {
+            currentId += 1;
+            return currentId;
+        },
+    };
+});
+
+test("renders the main page", () => {
+    const { container } = render(<App />);
+    const appTree = container.querySelector(".App");
+    expect(appTree).toMatchSnapshot();
 });
