@@ -1,32 +1,27 @@
 [
     {
-        "date": "2020-03-03T17:22:09.517Z",
+        "date": "2020-03-03",
         "description": "Test transaction 1",
-        "id": "001",
         "amount":"10.00"
     },
     {
-        "date": "2021-02-28T17:22:09.517Z",
+        "date": "2021-02-28",
         "description": "Test transaction 2",
-        "id": "002",
         "amount":"22.00"
     },
     {
-        "date": "2021-03-01T17:22:09.517Z",
+        "date": "2021-03-01",
         "description": "Test transaction 3",
-        "id": "003",
         "amount":"-20.00"
     },
     {
-        "date": "2021-03-02T17:22:09.517Z",
+        "date": "2021-03-02",
         "description": "Test transaction 4",
-        "id": "004",
         "amount":"1000.00"
     },
     {
-        "date": "2021-03-03T17:22:09.517Z",
+        "date": "2021-03-03",
         "description": "Test transaction 5",
-        "id": "005",
         "amount":"-100.00"
     }
 ]
