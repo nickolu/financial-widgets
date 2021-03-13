@@ -12,10 +12,13 @@ const EditTransactionForm = ({ bankHistory }) => {
 
     useEffect(() => {
         const selectedRecord = bankHistory.findRecordById(id);
-        setCurrentRecord(selectedRecord.document);
-        setAmount(selectedRecord.amount);
-        setDescription(selectedRecord.description);
-        setDate(selectedRecord.date);
+        console.log(id);
+        if (selectedRecord) {
+            setCurrentRecord(selectedRecord.document);
+            setAmount(selectedRecord.amount);
+            setDescription(selectedRecord.description);
+            setDate(selectedRecord.date);
+        }
     }, [id, setId, bankHistory]);
     return (
         <Form

@@ -1,5 +1,6 @@
 import { BANK_HISTORY_LOCAL_STORAGE_NAME } from "../constants.js";
 import { LocalStorageDataStore } from "../data-store/LocalStorageDataStore.js";
+import { formatDateForDateInput } from "../utils/formatDate.js";
 import { BaseEntity } from "./BaseEntity.js";
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
@@ -15,7 +16,7 @@ export class BankRecord extends BaseEntity {
     static createNew({ description = "", amount = 0 }) {
         const document = {
             id: this.id,
-            date: new Date(),
+            date: formatDateForDateInput(new Date()),
             description: description,
             amount: amount,
         };
