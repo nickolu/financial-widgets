@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# Financial Widgets
+
+Just a sample react app to render some invoices and allow you to add/edit the data. 
+
+# Built Using Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
